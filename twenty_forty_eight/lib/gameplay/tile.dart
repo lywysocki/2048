@@ -1,13 +1,8 @@
 class Tile {
   int value;
-
-  final int index;
-
-  int row;
-  int col;
   bool merged;
 
-  Tile(this.value, this.index, {this.row = 0, this.col = 0}) : merged = false;
+  Tile(this.value) : merged = false;
 
   void updateValue(int newValue) {
     value = newValue;
@@ -21,21 +16,22 @@ class Tile {
     merged = false;
   }
 
-  void setPosition(int newRow, int newCol) {
-    row = newRow;
-    col = newCol;
-  }
+  bool isEmpty() => value == 0;
 
-  List<int> getPosition() {
-    return [row, col];
-  }
-
-  void mergeWith(Tile otherTile) {
-    if (!otherTile.merged && otherTile.value == value) {
+  bool mergeWith(Tile otherTile) {
+    if (!merged && !otherTile.merged && otherTile.value == this.value) {
       value *= 2;
       otherTile.updateValue(0);
+      otherTile.merged = false;
       markMerged();
+      return true;
     }
+    return false;
   }
 
+  static void swapTiles({required Tile t1, required Tile t2}) {
+    Tile tempT = t1;
+    t1 = t2;
+    t2 = tempT;
   }
+}
