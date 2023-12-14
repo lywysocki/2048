@@ -1,8 +1,10 @@
 class Tile {
   int value;
   bool merged;
+  final int index;
+  final int? nextIndex;
 
-  Tile(this.value) : merged = false;
+  Tile(this.value, this.index, {this.nextIndex, this.merged = false});
 
   void updateValue(int newValue) {
     value = newValue;
@@ -19,7 +21,7 @@ class Tile {
   bool isEmpty() => value == 0;
 
   bool mergeWith(Tile otherTile) {
-    if (!merged && !otherTile.merged && otherTile.value == this.value) {
+    if (!merged && !otherTile.merged && otherTile.value == value) {
       value *= 2;
       otherTile.updateValue(0);
       otherTile.merged = false;

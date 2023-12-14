@@ -1,13 +1,32 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_swipe_detector/flutter_swipe_detector.dart';
+import 'package:twenty_forty_eight/gameplay/tile.dart';
+
 import 'game_board.dart';
 
-class gameBoardController {
-  late final gameBoard game;
+class GameBoardController extends StateNotifier<GameBoard> {
+  final StateNotifierProviderRef ref;
+  late List<Tile> tiles;
 
-  // TODO: begins/resets the game
-  void startGame() {}
+  GameBoardController(this.ref) : super(GameBoard.newGame([])) {
+    newGame();
+  }
 
-  // TODO: have this based off of tile score/value OR the user pressing a end Button
-  void endGame() {}
+  GameBoard _newGame() {
+    return GameBoard.newGame(tiles);
+  }
 
+  void newGame() {
+    state = _newGame();
+  }
 
+  //Move the tile in the direction
+  bool move(SwipeDirection direction) {
+    return false;
+  }
+
+  final gameBoardController =
+      StateNotifierProvider<GameBoardController, GameBoard>((ref) {
+    return GameBoardController(ref);
+  });
 }
