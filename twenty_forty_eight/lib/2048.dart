@@ -28,7 +28,7 @@ class _GameState extends ConsumerState<TwentyFortyEight>
       autofocus: true,
       focusNode: FocusNode(),
       onKey: (RawKeyEvent event) {
-        // move tiles based on keyboard arrows
+        // move tiles based on keyboard arrows (lrud)
       },
       child: SwipeDetector(
         onSwipe: (direction, offset) {
@@ -61,7 +61,7 @@ class _GameState extends ConsumerState<TwentyFortyEight>
                             Button(
                               text: 'Restart Game',
                               onPressed: () {
-                                //Restart the game
+                                //restart the game
                               },
                             )
                           ],
@@ -77,7 +77,7 @@ class _GameState extends ConsumerState<TwentyFortyEight>
               Stack(
                 children: [
                   const EmptyBoard(),
-                  //TODO: Add the Tile Board Widget
+                  //TODO: add the tile board so theres moving peices
                 ],
               )
             ],

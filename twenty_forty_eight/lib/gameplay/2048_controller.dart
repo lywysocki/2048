@@ -20,7 +20,7 @@ class GameBoardController extends StateNotifier<GameBoard> {
     state = _newGame();
   }
 
-  //Move the tile in the direction
+  //move the tile in the direction
   bool move(SwipeDirection direction) {
     return false;
   }
